@@ -1,0 +1,10 @@
+blank_issues_enabled: true
+contact_links: []
+
+issue_templates:
+  - name: "Bug Report"
+    description: "File a bug report"
+    file: bug-template.yml
+  - name: "Task"
+    description: "File a general task"
+    file: task-template.yml
