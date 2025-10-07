@@ -8,9 +8,9 @@ export default function CustomersPage() {
     customers, 
     loading, 
     error, 
-    fetchCustomers, 
-    saveCustomer, 
-    updateCustomer, 
+    fetchCustomers,
+    updateCustomer,
+    createCustomer,
     deleteCustomer 
   } = useCustomers();
 
@@ -21,7 +21,7 @@ export default function CustomersPage() {
       if (id) {
         await updateCustomer(id, customerData);
       } else {
-        await saveCustomer(customerData);
+        await createCustomer(customerData);
       }
       setEditCustomer(null);
     } catch (err) {
