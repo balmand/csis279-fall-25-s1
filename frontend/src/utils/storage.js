@@ -12,3 +12,5 @@ class Storage {
         return user ? user : null;
     }
 }
+
+export default Storage;
