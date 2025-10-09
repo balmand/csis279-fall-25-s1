@@ -8,6 +8,8 @@ import React from 'react';
 import BooksPage from './pages/BooksPage';
 import CustomersPage from './pages/CustomersPage';
 import { Link, Route, Routes } from 'react-router-dom';
+import ContactPage from './pages/ContactPage';
+
 
 import './App.css';
 
@@ -20,6 +22,7 @@ function App() {
         <Link to="/">Home</Link> |
         <Link to="/books">Books</Link> |
         <Link to="/customers">Customers</Link>
+        <Link to="/contact">Contact Us</Link>
       </header>
 
       <main className="App-main">
@@ -27,6 +30,8 @@ function App() {
           <Route path="/" element={<><BooksPage /><CustomersPage /></>} />
           <Route path="/books" element={<BooksPage />} />
           <Route path="/customers" element={<CustomersPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+
         </Routes>
       </main>
 
