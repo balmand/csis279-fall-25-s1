@@ -7,6 +7,7 @@
 import React from 'react';
 import BooksPage from './pages/BooksPage';
 import CustomersPage from './pages/CustomersPage';
+import MenuPage from './pages/MenuPage';
 import { Link, Route, Routes } from 'react-router-dom';
 import ContactPage from './pages/ContactPage';
 
@@ -19,10 +20,7 @@ function App() {
       <header className="App-header">
         <h1>📚 Book Management System</h1>
         <p>Learn Modularity, Clean Code & Reusability</p>
-        <Link to="/">Home</Link> |
-        <Link to="/books">Books</Link> |
-        <Link to="/customers">Customers</Link>
-        <Link to="/contact">Contact Us</Link>
+        <MenuPage></MenuPage>
       </header>
 
       <main className="App-main">
@@ -31,7 +29,6 @@ function App() {
           <Route path="/books" element={<BooksPage />} />
           <Route path="/customers" element={<CustomersPage />} />
           <Route path="/contact" element={<ContactPage />} />
-
         </Routes>
       </main>
 
