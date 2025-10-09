@@ -1,0 +1,67 @@
+name: 🛠️ Project Task
+description: Use this template to create a well-defined development task
+title: "[Task]: "
+labels: ["task"]
+assignees: []
+
+body:
+  - type: input
+    id: task-title
+    attributes:
+      label: 🛠️ Task Title
+      description: A concise summary of the task
+    validations:
+      required: true
+
+  - type: textarea
+    id: objective
+    attributes:
+      label: 📌 Objective
+      description: A brief explanation of why this task is needed and what it aims to accomplish
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 📋 Description
+      description: Detailed explanation of what the task includes, technical context, etc.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: ✅ Acceptance Criteria
+      description: List the criteria that must be met for the task to be considered complete.
+      placeholder: |
+        - [ ] Criteria 1
+        - [ ] Criteria 2
+        - [ ] Criteria 3
+    validations:
+      required: false
+
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: 🔄 Dependencies
+      description: Linked issues or other tasks
+
+  - type: input
+    id: estimated-time
+    attributes:
+      label: ⏰ Estimated Time
+      description: E.g., 2 hours or breakdown by subtasks
+
+  - type: textarea
+    id: testing
+    attributes:
+      label: 🧪 Testing Instructions
+      description: Steps to test or verify the implementation
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 📎 Additional Notes
+      description: Other helpful context, links, or clarifications
