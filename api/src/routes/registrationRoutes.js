@@ -1,17 +1,15 @@
-import { Router } from 'express';
-import { RegistrationRepository } from '../domain/repositories/RegistrationRepository.js';
-import { RegistrationService } from '../services/RegistrationService.js';
-import { RegistrationController } from '../controllers/RegistrationController.js';
-import { idParam, upsertRegistration } from '../validators/registrationValidators.js';
+import { Router } from "express";
+import { CustomerRepository } from "../domain/repositories/CustomerRepository.js";
+import { CustomerService } from "../services/CustomerService.js";
+import { CustomerController } from "../controllers/CustomerController.js";
+import { signupValidator } from "../validators/customerValidators.js";
 
-const repo = new RegistrationRepository();
-const service = new RegistrationService(repo);
-const controller = new RegistrationController(service);
+const repo = new CustomerRepository();
+const service = new CustomerService(repo);
+const controller = new CustomerController(service);
 
 export const registrationRoutes = Router();
 
-registrationRoutes.get('/', controller.list);
-registrationRoutes.get('/:id', idParam, controller.get);
-registrationRoutes.post('/', upsertRegistration, controller.create);
-registrationRoutes.put('/:id', [...idParam, ...upsertRegistration], controller.update);
-registrationRoutes.delete('/:id', idParam, controller.delete);
+customerRoutes.post("/signup", signupValidator, controller.signup);
+
+

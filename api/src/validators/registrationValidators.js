@@ -1,32 +1,15 @@
-import { body, param } from 'express-validator';
+import { body, validationResult } from "express-validator";
 
-export const idParam = [
-    param('id')
-        .isInt({ gt: 0 })
-        .withMessage('id must be a positive integer')
-];
+export const signupValidator = [
+  body('name').trim().notEmpty().withMessage("Name is required."),
+  body('email').isEmail().withMessage("Valid email is required."),
+  body('phone').trim().notEmpty().withMessage("Phone is required."),
+  body('address').trim().notEmpty().withMessage("Address is required."),
+  body('password').isLength({ min: 8 }).withMessage("Password must be at least 8 characters."),
 
-export const upsertRegistration = [
-    body('customerId')
-        .isInt({ gt: 0 })
-        .withMessage('customerId must be a positive integer'),
-
-    body('bookId')
-        .isInt({ gt: 0 })
-        .withMessage('bookId must be a positive integer'),
-
-    body('date')
-        .isISO8601()
-        .withMessage('date must be a valid ISO 8601 date (e.g., 2025-10-09)'),
-
-    body('dueDate')
-        .optional({ values: 'falsy' }) // allows null or missing field
-        .isISO8601()
-        .withMessage('dueDate must be a valid ISO 8601 date if provided'),
-
-    body('status')
-        .optional()
-        .isString()
-        .isIn(['active', 'completed', 'cancelled'])
-        .withMessage('status must be one of: active, completed, cancelled'),
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) return res.status(400).json({ message: errors.array()[0].msg, errors: errors.array() });
+    next();
+  },
 ];
