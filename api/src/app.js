@@ -5,7 +5,9 @@ import {bookRoutes} from './routes/bookRoutes.js';
 import {customerRoutes} from './routes/customerRoutes.js'
 import {forgotPasswordRoutes} from './routes/forgotPasswordRoutes.js'
 import { healthCheck } from './config/db.js';
+import { contactRoutes } from './routes/contactRoutes.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+
 
 dotenv.config();
 
@@ -25,5 +27,6 @@ app.get('/health', async(req, res)=>{
 
 app.use('/api/books', bookRoutes);
 app.use("/api/customers", customerRoutes);
+app.use("/api/contact", contactRoutes);
 app.use("/api/auth", forgotPasswordRoutes);
 app.use(errorHandler);

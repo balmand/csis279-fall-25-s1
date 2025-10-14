@@ -1,41 +1,77 @@
-/**
- * Contact Us Page
- * 
- * Simple static page with contact info
- */
+import React, { useState } from 'react';
+import './ContactPage.css';
 
-import React from "react";
+export default function ContactPage() {
+    const [form, setForm] = useState({
+        name: '',
+        email: '',
+        problem: '',
+        message: ''
+    });
+    const [status, setStatus] = useState('');
 
-function ContactUs() {
-  return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "linear-gradient(to bottom right, gray, black)",
-        color: "white",
-        padding: "40px",
-        textAlign: "center",
-      }}
-    >
-      <h1 style={{ fontSize: "2.5rem", color: "dark blue", marginBottom: "20px" }}>
-        Contact Us
-      </h1>
+    const handleChange = e => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
 
-      <p style={{ fontSize: "1.2rem", maxWidth: "700px", margin: "0 auto 30px" }}>
-        Have any questions, feedback, or issues? We’d love to hear from you.
-      </p>
+    const handleSubmit = async e => {
+        e.preventDefault();
+        setStatus('Sending...');
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(form)
+            });
+            const data = await res.json();
+            if (data.success) {
+                setStatus('Message sent!');
+                setForm({ name: '', email: '', problem: '', message: '' });
+            } else {
+                setStatus(data.error || 'Error sending message.');
+            }
+        } catch {
+            setStatus('Error sending message.');
+        }
+    };
 
-      <div style={{ fontSize: "1.1rem", lineHeight: "1.8", marginBottom: "40px" }}>
-        <p><strong>Email:</strong> support@bookmanagement.com</p>
-        <p><strong>Phone:</strong> +1 (555) 123-4567</p>
-        <p><strong>Address:</strong> 123 Knowledge St, Reading City, Libraryland</p>
-      </div>
-
-      <footer style={{ marginTop: "60px", fontSize: "0.9rem", color: "#ddd" }}>
-        © {new Date().getFullYear()} Book Management Project — All rights reserved.
-      </footer>
-    </div>
-  );
+    return (
+        <div className="contact-container">
+            <h2>Contact Us</h2>
+            <form className="contact-form" onSubmit={handleSubmit}>
+                <input
+                    name="name"
+                    placeholder="Your Name"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    name="email"
+                    type="email"
+                    placeholder="Your Email"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
+                />
+                <textarea
+                    name="problem"
+                    placeholder="Describe Your Problem"
+                    value={form.problem}
+                    onChange={handleChange}
+                    required
+                    rows={4}
+                />
+                <textarea
+                    name="message"
+                    placeholder="Additional Message (optional)"
+                    value={form.message}
+                    onChange={handleChange}
+                    rows={4}
+                />
+                <button type="submit">Send</button>
+            </form>
+            <p>{status}</p>
+        </div>
+    );
 }
-
-export default ContactUs;
