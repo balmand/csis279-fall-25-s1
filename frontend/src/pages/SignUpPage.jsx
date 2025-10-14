@@ -38,7 +38,7 @@ export default function SignUpPage() {
         <div style={{ padding: '2rem' }}>
             <h1>Customer SignUp</h1>
 
-            {!loading && isSignUp &&
+            {!loading && signup &&
                 <SignUpForm
                     onSave={handleCreateCustomer}
                     onCancel={handleCancel}
