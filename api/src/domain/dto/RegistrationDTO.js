@@ -1,21 +1,21 @@
 export class RegistrationDTO {
-    constructor({ id, customerId, bookId, date, dueDate, status }) {
+    constructor({ id, name, email, phone, address, password }) {
         this.id = id;
-        this.customerId = customerId;
-        this.bookId = bookId;
-        this.date = date;
-        this.dueDate = dueDate;
-        this.status = status;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.password = password;
     }
 
     static fromEntity(entity) {
         return new RegistrationDTO({
             id: entity.id,
             customerId: entity.customerId,
-            bookId: entity.bookId,
-            date: entity.date,
-            dueDate: entity.dueDate,
-            status: entity.status
+            name: entity.name,
+            email: entity.email,
+            phone: entity.phone,
+            password: entity.password
         });
     }
 }

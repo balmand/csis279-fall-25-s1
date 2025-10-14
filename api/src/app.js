@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import {bookRoutes} from './routes/bookRoutes.js';
 import {customerRoutes} from './routes/customerRoutes.js'
+import {registrationRoutes} from './routes/registrationRoutes.js'
 import {forgotPasswordRoutes} from './routes/forgotPasswordRoutes.js'
 import { healthCheck } from './config/db.js';
 import { contactRoutes } from './routes/contactRoutes.js';
@@ -29,4 +30,5 @@ app.use('/api/books', bookRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/auth", forgotPasswordRoutes);
+app.use("/api/customers", registrationRoutes);
 app.use(errorHandler);
