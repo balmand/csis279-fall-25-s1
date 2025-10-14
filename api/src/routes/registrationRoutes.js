@@ -11,6 +11,6 @@ const controller = new CustomerController(service);
 
 export const registrationRoutes = Router();
 
-customerRoutes.post("/signup", signupValidator, controller.signup);
+registrationRoutes.post("/signup", signupValidator, controller.create);
 
 
