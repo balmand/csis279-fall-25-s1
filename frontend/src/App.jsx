@@ -5,6 +5,8 @@
  */
 
 import React from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
+
 import BooksPage from './pages/BooksPage';
 import CustomersPage from './pages/CustomersPage';
 import MenuPage from './pages/MenuPage';
@@ -25,6 +27,7 @@ function App() {
 
       <main className="App-main">
         <Routes>
+          {/* Home shows both pages together */}
           <Route path="/" element={<><BooksPage /><CustomersPage /></>} />
           <Route path="/books" element={<BooksPage />} />
           <Route path="/customers" element={<CustomersPage />} />
