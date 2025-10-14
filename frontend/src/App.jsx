@@ -10,7 +10,6 @@ import { Link, Route, Routes } from 'react-router-dom';
 import BooksPage from './pages/BooksPage';
 import CustomersPage from './pages/CustomersPage';
 import MenuPage from './pages/MenuPage';
-import { Link, Route, Routes } from 'react-router-dom';
 import ContactPage from './pages/ContactPage';
 
 
