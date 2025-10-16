@@ -14,6 +14,7 @@ import ContactPage from './pages/ContactPage';
 
 
 import './App.css';
+import CheckoutPage from './pages/CheckoutPage';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/books" element={<BooksPage />} />
           <Route path="/customers" element={<CustomersPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
         </Routes>
       </main>
 

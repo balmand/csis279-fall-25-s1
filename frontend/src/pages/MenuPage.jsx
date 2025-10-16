@@ -19,6 +19,10 @@ export default function MenuBar() {
             <Link to="/contact" style={styles.link}>
                 <button style={styles.button}>Contact us</button>
             </Link>
+
+            <Link to="/checkout" style={styles.link}>
+                <button style={styles.button}>Proceed to Checkout</button>
+            </Link>
         </div>
     );
 }

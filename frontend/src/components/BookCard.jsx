@@ -10,6 +10,16 @@
 import React from 'react';
 
 export function BookCard({ book, onEdit, onDelete, onView }) {
+    
+    const addToCard = () => {
+         let cart = JSON.parse(localStorage.getItem("cart"));
+         if(!cart){
+            cart = [];
+         }
+         cart.push({...book, qty: 1});
+         localStorage.setItem("cart", JSON.stringify(cart));
+         alert("Added to Cart");
+    }
     return (
         <div className="book-card">
             <div className="book-info">
@@ -46,6 +56,9 @@ export function BookCard({ book, onEdit, onDelete, onView }) {
                         Delete
                     </button>
                 )}
+                <button className="btn btn-success" onClick={()=> addToCard()}>
+                    Add to Cart
+                </button>
             </div>
         </div>
     );
